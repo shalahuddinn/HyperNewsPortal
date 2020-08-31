@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News List</title>
+</head>
+<body>
+    <h2>Hyper news</h2>
+    <form method="get" action="/news/">
+        <label for="search" >Search</label>
+        <input id="search" name="q" type="text" required>
+        <button type="submit">Post News</button>
+    </form>
+    {% for obj in objects %}
+    <h4>{{ obj.date }}</h4>
+
+    <ul>
+        {% for item in obj.items %}
+        <li><a target="_blank" href="/news/{{item.link}}/">{{ item.title}}</a></li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+    <a target="_blank" href="/news/create/">Create News</a>
+</body>
+</html>
